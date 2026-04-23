@@ -8,6 +8,7 @@ import { Toaster } from "@/components/ui/sonner";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
   const session = await auth();
+  console.log("[DashboardLayout] session:", JSON.stringify(session));
   if (!session) redirect("/login");
 
   return (
