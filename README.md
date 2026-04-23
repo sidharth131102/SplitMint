@@ -8,7 +8,7 @@ SplitMint is a full-stack, production-ready bill-splitting application that comb
 
 ## Live Demo
 
-🔗 **[splitmint.vercel.app](https://splitmint.vercel.app)**
+🔗 **[splitmint.vercel.app](https://split-mint-chi.vercel.app/)**
 
 ---
 
