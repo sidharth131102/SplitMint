@@ -146,7 +146,7 @@ export async function POST(req: NextRequest) {
     .slice(0, 15)
     .map((e) => {
       const g = groups.find((g) => g._id.toString() === e.groupId.toString());
-      const nameMap: Record<string, string> = { owner: session.user.name ?? "Me" };
+      const nameMap: Record<string, string> = { owner: session.user?.name ?? "Me" };
       g?.participants.forEach((p) => (nameMap[p._id.toString()] = p.name));
       return {
         description: e.description,
