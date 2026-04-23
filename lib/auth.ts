@@ -58,8 +58,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
     },
     async jwt({ token, user }) {
       if (user) {
-        token.id = user.id;
-        token.name = user.name;
+        try {
+          await connectDB();
+          const dbUser = await User.findOne({ email: user.email });
+          if (dbUser) {
+            token.id = dbUser._id.toString();
+            token.name = dbUser.name;
+          } else {
+            token.id = user.id;
+            token.name = user.name;
+          }
+        } catch {
+          token.id = user.id;
+          token.name = user.name;
+        }
       }
       return token;
     },
