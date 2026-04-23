@@ -34,12 +34,12 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ grou
     groupId,
     description: "Settlement",
     amount: s.amount,
-    date: s.settledAt,
+    date: s.settledAt.toISOString(),
     payerId: s.fromId,
     splitMode: "equal" as const,
     splits: [{ participantId: s.toId, amount: s.amount }],
     category: "Other" as const,
-    createdAt: s.settledAt,
+    createdAt: s.settledAt.toISOString(),
   }));
 
   const allExpenses = [
